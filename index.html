@@ -9,12 +9,12 @@
 
         /* Root Variables */
         :root {
-            --primary-color: #333333;       /* Dark Gray */
-            --secondary-color: #555555;     /* Medium Gray */
-            --accent-color: #888888;        /* Light Gray */
-            --highlight-color: #aaaaaa;     /* Gray */
-            --background-color: #f0f0f0;    /* Light Gray */
-            --text-color: #333333;          /* Dark Gray */
+            --primary-color: #333333;         /* Dark Gray */
+            --secondary-color: #444444;       /* Medium Dark Gray */
+            --accent-color: #777777;          /* Light Gray */
+            --highlight-color: #555555;       /* Slightly Lighter Gray */
+            --background-color: #f2f2f2;      /* Very Light Gray */
+            --text-color: #000000;            /* Black */
             --font-family: 'Poppins', sans-serif;
         }
 
@@ -47,18 +47,6 @@
             top: 0;
             z-index: 100;
             transition: background-color 0.3s ease;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
         }
 
         .logo h1 {
@@ -99,11 +87,6 @@
             text-align: center;
         }
 
-        /* Decreased spacing between sections */
-        section + section {
-            margin-top: 30px;
-        }
-
         section h2 {
             margin-bottom: 25px;
             font-size: 2em;
@@ -111,6 +94,7 @@
             font-weight: 600;
             position: relative;
             display: inline-block;
+            animation: fadeInDown 1s ease-in-out;
         }
 
         section h2::after {
@@ -130,6 +114,7 @@
             max-width: 800px;
             margin: 0 auto 25px;
             font-size: 1.1em;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .skills {
@@ -137,6 +122,7 @@
             justify-content: center;
             flex-wrap: wrap;
             list-style: none;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .skills li {
@@ -146,29 +132,163 @@
             padding: 12px 20px;
             border-radius: 20px;
             font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         /* Projects Section */
-        .project-container {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
+        .project-info h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            animation: fadeInUp 1s ease-in-out;
         }
 
-        .project {
-            background: var(--secondary-color);
+        .project-info a {
+            text-decoration: none;
             color: #fff;
-            margin: 15px 0;
-            padding: 15px;
-            border-radius: 10px;
+            background-color: var(--highlight-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 0 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Contact Section */
+        #contact p {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        #contact a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: var(--accent-color);
         }
 
         /* Footer */
         footer {
             background-color: var(--primary-color);
-            color: #fff;
+            padding: 15px;
             text-align: center;
-            padding: 20px 0;
+            color: #fff;
+            font-size: 0.9em;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            animation: fadeInUp 1s ease-in-out;
         }
 
-        /*
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <img src="assets/images/Pic.jpg" alt="Adham Osama">
+            <h1>Adham Osama</h1>
+        </div>
+        <div class="nav-toggle">&#9776;</div>
+        <ul class="nav-links">
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I graduated from Helwan University Cairo with a Bachelor of Business Administration in Accounting, where I learned the fundamentals of financial accounting, management accounting, and auditing. I also completed multiple online courses and certifications in business analytics and data preparation, which enhanced my knowledge and proficiency in data analysis and report development. I am passionate about learning new technologies and tools that can help me solve complex business problems and create value for my organization and clients.
+        </p>
+        <h2>Skills</h2>
+        <ul class="skills">
+            <li>Excel</li>
+            <li>Power BI</li>
+            <li>Data Visualization</li>
+            <li>Python</li>
+            <li>SQL</li>
+            <li>Tableau</li>
+            <li>Business intelligence</li>
+        </ul>
+
+       
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <img src="assets/images/Project.gif" alt="Watchs Data Analysis Project" id="project-image">
+                </div>
+                <button class="prev" aria-label="Previous image">&#10094;</button>
+                <button class="next" aria-label="Next image">&#10095;</button>
+            </div>
+            <div class="project-info">
+                <h3>Watchs Data Analysis Project</h3>
+                <p>
+                    An Watchs data analysis project utilizing Python for data preprocessing, SQL for querying insights, and Power BI for creating interactive dashboards.
+    
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:adhamossama221@gmail.com">adhamossama221@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/adhamosama3/" target="_blank">in/Adham Osama</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Adham Osama. All rights reserved.
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Image Slider Logic
+        const images = [
+            'assets/images/Project.gif'
+          
+        ];
+
+        let currentImageIndex = 0;
+        const projectImage = document.getElementById('project-image');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        prevButton.addEventListener('click', showPrevImage);
+        nextButton.addEventListener('click', showNextImage);
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            projectImage.src = images[currentImageIndex];
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            projectImage.src = images[currentImageIndex];
+        }
+
+        // Responsive Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+
