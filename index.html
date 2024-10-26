@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Adham Osama | Data Analyst</title>
+    <title>Adham Osama | Data Analyst </title>
     <style>
         /* Import Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-        /* Root Variables */
+      /* Root Variables */
         :root {
-            --primary-color: #333333;
-            --secondary-color: #444444;
-            --accent-color: #777777;
-            --highlight-color: #555555;
-            --background-color: #f2f2f2;
-            --text-color: #000000;
+            --primary-color: #333333;         /* Dark Gray */
+            --secondary-color: #444444;       /* Medium Dark Gray */
+            --accent-color: #777777;          /* Light Gray */
+            --highlight-color: #555555;       /* Slightly Lighter Gray */
+            --background-color: #f2f2f2;      /* Very Light Gray */
+            --text-color: #000000;            /* Black */
             --font-family: 'Poppins', sans-serif;
         }
 
@@ -46,6 +46,7 @@
             width: 100%;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s ease;
         }
 
         .logo {
@@ -83,6 +84,12 @@
             font-weight: bold;
             padding: 8px 12px;
             border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--accent-color);
+            color: #fff;
         }
 
         /* Navigation Toggle (for mobile) */
@@ -97,11 +104,31 @@
             text-align: center;
         }
 
+        /* Decreased spacing between sections */
+        section + section {
+            margin-top: 30px;
+        }
+
         section h2 {
             margin-bottom: 25px;
             font-size: 2em;
             color: var(--primary-color);
             font-weight: 600;
+            position: relative;
+            display: inline-block;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        section h2::after {
+            content: '';
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
         /* About Section */
@@ -109,6 +136,7 @@
             max-width: 800px;
             margin: 0 auto 25px;
             font-size: 1.1em;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .skills {
@@ -116,6 +144,7 @@
             justify-content: center;
             flex-wrap: wrap;
             list-style: none;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .skills li {
@@ -125,6 +154,85 @@
             padding: 12px 20px;
             border-radius: 20px;
             font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        
+
+        /* Certificates and CV Section within About */
+        #about .certificates-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        #about .certificates-container h2 {
+            margin-bottom: 25px;
+            font-size: 2em;
+            color: var(--primary-color);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        #about .certificates-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #about .certificate-item {
+            margin: 10px;
+            text-align: center;
+            flex: 1 1 45%;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        #about .certificate-item img {
+            width: 100%;
+            
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #about .certificate-item.horizontal {
+            max-width: 80%;       /* Decrease the width of the div */
+        /* Set the desired maximum height */
+    
+    
+         /* Hide any content that overflows the div */
+    position: relative;   /* Enable positioning of child elements */
+        }
+        #about .certificate-item.horizontal img {
+        max-height: 500px;
+        max-width: fit-content;
+        margin-left: 20%;
+        
+        }
+        #about .certificate-item.horizontal .btn {
+
+        margin-left: 20%;
+        
+        }
+
+        #about .certificate-item .btn {
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background-color: var(--highlight-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #about .certificate-item .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
         }
 
         /* Projects Section */
@@ -134,25 +242,103 @@
             align-items: stretch;
         }
 
+        @media (min-width: 768px) {
+            .project-container {
+                flex-direction: row;
+                align-items: stretch;
+                justify-content: center;
+                text-align: left;
+            }
+        }
+
         .slider-wrapper {
             position: relative;
             flex: 1;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
         }
 
         .slider img {
             width: 100%;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        /* Slider Buttons Positioned Outside the Image but Within Left Column */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            z-index: 10;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .prev {
+            left: -3rem;
+        }
+
+        .next {
+            right: -3rem;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Project Info Section */
+        .project-info {
+            flex: 1;
+            animation: fadeInRight 1s ease-in-out;
+            text-align: center;
         }
 
         .project-info h3 {
             font-size: 1.6em;
             margin-bottom: 15px;
             color: var(--primary-color);
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .project-info p {
             font-size: 1em;
             margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .project-info a {
+            text-decoration: none;
+            color: #fff;
+            background-color: var(--highlight-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 0 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .project-info a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Remove Empty Spaces */
+        .project-container > div {
+            margin: 2em;
+            padding: 0;
         }
 
         /* Contact Section */
@@ -161,6 +347,18 @@
             font-size: 1.2em;
             margin-bottom: 10px;
             color: var(--primary-color);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        #contact a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: var(--accent-color);
         }
 
         /* Footer */
@@ -173,10 +371,104 @@
             position: relative;
             bottom: 0;
             width: 100%;
+            animation: fadeInUp 1s ease-in-out;
         }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        
+        @media (max-width: 1000px) { 
+            #about .certificate-item.horizontal img {
+        max-height: 500px;
+        max-width: fit-content;
+        margin-left: 12%;
+        
+        }
+        #about .certificate-item.horizontal .btn {
+
+        margin-left: 25%;
+
+}   
+            
+
+            .project-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-info {
+                margin-left: 0;
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .slider-wrapper {
+                width: 90%;
+            }
+
+            /* Adjust arrows for mobile */
+            
+
+            
+            
+
+            
+
+            
+}
 
         /* Responsive Styles */
         @media (max-width: 768px) {
+            #about .certificate-item.horizontal img {
+        max-height: 500px;
+        max-width: fit-content;
+        
+        
+        }
             .nav-links {
                 flex-direction: column;
                 position: absolute;
@@ -185,6 +477,10 @@
                 width: 100%;
                 background-color: var(--primary-color);
                 display: none;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
             }
 
             .nav-toggle {
@@ -196,6 +492,48 @@
 
             .nav-links.active {
                 display: flex;
+            }
+
+            .nav-links a {
+                padding: 10px;
+            }
+
+            .project-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-info {
+                margin-left: 0;
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .slider-wrapper {
+                width: 90%;
+            }
+
+            
+
+            /* Certificates Section Mobile Adjustments */
+            #about .certificates-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #about .certificate-item {
+                flex-basis: 100%;
+            }
+
+            #about .certificate-item img {
+                max-width: 100%;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nav-toggle {
+                display: none;
             }
         }
     </style>
@@ -231,6 +569,8 @@
             <li>Tableau</li>
             <li>Business intelligence</li>
         </ul>
+
+       
     </section>
 
     <!-- Projects Section -->
@@ -241,15 +581,14 @@
                 <div class="slider">
                     <img src="assets/images/Project.gif" alt="Watchs Data Analysis Project" id="project-image">
                 </div>
+                <button class="prev" aria-label="Previous image">&#10094;</button>
+                <button class="next" aria-label="Next image">&#10095;</button>
             </div>
             <div class="project-info">
                 <h3>Watchs Data Analysis Project</h3>
                 <p>
                     An Watchs data analysis project utilizing Python for data preprocessing, SQL for querying insights, and Power BI for creating interactive dashboards.
-                </p>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Contact Section -->
     <section id="contact">
@@ -265,6 +604,30 @@
 
     <!-- JavaScript -->
     <script>
+        // Image Slider Logic
+        const images = [
+            'assets/images/Project.gif'
+          
+        ];
+
+        let currentImageIndex = 0;
+        const projectImage = document.getElementById('project-image');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        prevButton.addEventListener('click', showPrevImage);
+        nextButton.addEventListener('click', showNextImage);
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            projectImage.src = images[currentImageIndex];
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            projectImage.src = images[currentImageIndex];
+        }
+
         // Responsive Navigation Toggle
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
